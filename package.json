@@ -6,6 +6,7 @@
   "author": "Lucas <lucascarmo6@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.787.0",
     "express": "^4.17.1"
   },
   "scripts": {
