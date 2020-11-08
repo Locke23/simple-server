@@ -11,9 +11,10 @@ app.get("/", (req, res) => {
   meta.request("/latest/meta-data/instance-id", function (err, data) {
     instanceId = data;
   });
-  return res.send(
-    `<html><body>${`Servidor esta funcionando. ID da instancia: ${instanceId}`}</body></html>`
-  );
+  return res.json({
+    status: "ok",
+    instanceId: instanceId || null,
+  });
 });
 
 app.post("/test", (req, res) => {
