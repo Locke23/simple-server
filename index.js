@@ -6,12 +6,14 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  var meta = new aws.MetadataService();
-
+  let meta = new aws.MetadataService();
+  let instanceId;
   meta.request("/latest/meta-data/instance-id", function (err, data) {
-    console.log(data);
+    instanceId = data;
   });
-  return res.send(`<html><body>${`servidor ta up`}</body></html>`);
+  return res.send(
+    `<html><body>${`Servidor esta funcionando. ID da instancia: ${instanceId}`}</body></html>`
+  );
 });
 
 app.post("/test", (req, res) => {
