@@ -1,12 +1,12 @@
-const AWS = require("aws-sdk");
-const express = require("express");
+import { MetadataService } from "aws-sdk";
+import express, { json } from "express";
 
 const app = express();
 
-app.use(express.json());
+app.use(json());
 
 app.get("/", (req, res) => {
-  let meta = new AWS.MetadataService();
+  let meta = new MetadataService();
   try {
     meta.request("/latest/meta-data/instance-id", function (err, data) {
       return res.json({
